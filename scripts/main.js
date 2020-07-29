@@ -16,12 +16,17 @@ if(!this.global.done){
 
             var msg;
             try{
-                msg = Vars.mods.getScripts().runConsole(commands).slice(0, Vars.maxTextLength);
+                msg = Vars.mods.getScripts().runConsole(commands);
             } catch(e){
                 msg = e.toString();
             }
 
-            Core.app.post(run(() => Call.sendChatMessage(msg)));
+            Core.app.post(run(() => {
+                me().sendMessage(msg);
+                if(e.player == me()) return;
+
+                e.player.sendMessage(msg);
+            }));
         }
     }));
 }
