@@ -10,6 +10,7 @@ if(!this.global.done){
                 "me = Vars.playerGroup.all().get(" + e.player.id + ")",
                 "summon = ((u, a, x, y, team) => {for(i = 0; i<a; i++){ un = u.create(team); un.set(x, y); un.add()}})",
                 "findp = ((name) => {Vars.playerGroup.find(boolf(player => Strings.stripColors(player.name)==name))})",
+                //add more stuff here
                 "\"Empty\"",
                 e.message.slice(4, e.message.length)
             ].join(";\n");
