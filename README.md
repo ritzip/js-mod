@@ -3,8 +3,8 @@ Allows a non-dedicated server host(and admins) to execute js serverside by sendi
 
 ### Methods
 
-`me()`
-Returns your Player
+`me`
+Returns your Player (not a method but ok)
 
 `summon(unit, amount, x, y, team)`
 Spawns `amount` of `unit` on `x` `y` with team `team`

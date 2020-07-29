@@ -7,7 +7,7 @@ if(!this.global.done){
     Events.on(EventType.PlayerChatEvent, cons(e=>{
         if(e.message.split(" ")[0]=="!js"&&e.player.isAdmin){
             var commands = [
-                "me = (() => {Vars.playerGroup.all().get(" + e.player.id + ")})",
+                "me = Vars.playerGroup.all().get(" + e.player.id + ")",
                 "summon = ((u, a, x, y, team) => {for(i = 0; i<a; i++){ un = u.create(team); un.set(x, y); un.add()}})",
                 "findp = ((name) => {Vars.playerGroup.find(boolf(player => Strings.stripColors(player.name)==name))})",
                 "\"Empty\"",
