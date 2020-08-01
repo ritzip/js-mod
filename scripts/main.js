@@ -9,14 +9,8 @@ if(!this.global.done){
     const setblock = (block, tile, team) => {tile.setNet(block, team, 90); block.placed(tile)};
 
 
-    Core.app.post(run(() => {
-        Core.app.post(run(() => {
-            Core.app.post(run(() => {
-                Core.app.post(run(() => {
-                    scripter = Vars.player;
-                }));
-            }));
-        }));
+    Events.on(EventType.ClientLoadEvent, run(() => {
+        scripter = Vars.player;
     }));
     Events.on(EventType.PlayerChatEvent, cons(e => {
         if(e.message.split(" ")[0]=="!js" && e.player.isAdmin){
