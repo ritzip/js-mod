@@ -1,7 +1,8 @@
 # js-mod
-Allows a non-dedicated server host(and admins) to execute js serverside by sending "!js" into the chat. Also comes with a few utility methods!
+Allows a non-dedicated server host(and admins) to execute js serverside by sending "!js" into the chat. Also comes with a few utility functions!
 
-### Methods
+### Functions
+These functions also are executable in the game console.
 
 `me()`
 Returns your Player
