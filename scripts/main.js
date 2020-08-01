@@ -1,32 +1,27 @@
 if(!this.global.done){
     this.global.done = true;
-    const me = () => Vars.player;
+
+    var scripter = Vars.player
+    const me = () => scripter;
     const summon = (u, a, x, y, team) => {for(i = 0; i<a; i++){ un = u.create(team); un.set(x, y); un.add()}};
     const findp = (name) => Vars.playerGroup.find(boolf(player => Strings.stripColors(player.name)==name));
 
-    Events.on(EventType.PlayerChatEvent, cons(e=>{
-        if(e.message.split(" ")[0]=="!js"&&e.player.isAdmin){
-            var commands = [
-                "me = Vars.playerGroup.all().get(" + e.player.id + ")",
-                "summon = ((u, a, x, y, team) => {for(i = 0; i<a; i++){ un = u.create(team); un.set(x, y); un.add()}})",
-                "findp = ((name) => {Vars.playerGroup.find(boolf(player => Strings.stripColors(player.name)==name))})",
-                //add more stuff here
-                "\"Empty\"",
-                e.message.slice(4, e.message.length)
-            ].join(";\n");
-
+    Events.on(EventType.PlayerChatEvent, cons(e => {
+        if(e.message.split(" ")[0]=="!js" && e.player.isAdmin){
+            scripter = e.player;
             var msg;
             try{
-                msg = Vars.mods.getScripts().runConsole(commands);
-            } catch(e){
-                msg = e.toString();
+                msg = Vars.mods.getScripts().runConsole(e.message.slice(4, e.message.length));
+            } catch(er){
+                msg = er.toString();
             }
 
             Core.app.post(run(() => {
-                me().sendMessage(msg);
-                if(e.player == me()) return;
+                Vars.player.sendMessage(msg);
+                if(e.player == Vars.player) return;
 
                 e.player.sendMessage(msg);
+                print(msg)
             }));
         }
     }));
