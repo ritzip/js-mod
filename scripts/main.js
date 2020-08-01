@@ -1,12 +1,23 @@
 if(!this.global.done){
     this.global.done = true;
 
-    var scripter = Vars.player
+
+    var scripter;
     const me = () => scripter;
     const summon = (u, a, x, y, team) => {for(i = 0; i<a; i++){ un = u.create(team); un.set(x, y); un.add()}};
     const findp = (name) => Vars.playerGroup.find(boolf(player => Strings.stripColors(player.name)==name));
-    const setblock = (block, tile) => {tile.setNet(block, scripter.team, 90); block.placed(tile)};
+    const setblock = (block, tile, team) => {tile.setNet(block, team, 90); block.placed(tile)};
 
+
+    Core.app.post(run(() => {
+        Core.app.post(run(() => {
+            Core.app.post(run(() => {
+                Core.app.post(run(() => {
+                    scripter = Vars.player;
+                }));
+            }));
+        }));
+    }));
     Events.on(EventType.PlayerChatEvent, cons(e => {
         if(e.message.split(" ")[0]=="!js" && e.player.isAdmin){
             scripter = e.player;
