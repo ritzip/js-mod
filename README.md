@@ -11,3 +11,6 @@ Spawns `amount` of `unit` on `x` `y` with team `team`
 
 `findp(name)`
 Find player with the name `name`
+
+`setblock(block, tile)`
+Sets `tile`'s block to `block`s
